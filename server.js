@@ -10,6 +10,8 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(require("./routes/apiRoutes"));
+app.use(require("./routes/htmlRoutes"));
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/Workout",
 {
@@ -18,8 +20,7 @@ mongoose.connect(
   useCreateIndex: true,
   useFindAndModify: false
 });
-app.use(require("./routes/apiRoutes"));
-app.use(require("./routes/htmlRoutes"));
+
 
 app.listen(PORT, () => {
   console.log(`App running on port http://localhost:${PORT}`);
