@@ -32,7 +32,7 @@ app.get('/api/workouts', (req, res) => {
       },
     },
   ])
-    .then((dbWorkouts) => {
+    .then(dbWorkouts => {
       res.json(dbWorkouts);
     })
     .catch((err) => {
@@ -50,7 +50,7 @@ app.get('/api/workouts/range', (req, res) => {
     },
   ])
     .sort({ _id: -1 })
-    .limit(7)
+    .limit(8)
     .then((dbWorkouts) => {
       res.json(dbWorkouts);
     })
@@ -67,4 +67,4 @@ app.delete('/api/workouts', ({ body }, res) => {
       res.json(err);
     });
 });
-module.exports = app;
+module.exports = app
